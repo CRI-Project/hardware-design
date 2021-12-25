@@ -42,7 +42,8 @@ def getRespberrySerial():
     return respberry_serial
 
 def sendData(ppm, temperature, humidity):
-    response = requests.post('http://8.141.56.170:8083/sendSensorDataMessage',json ={
+    # change http://xxx.xxx.xxx.xxx:port to your ip address and port
+    response = requests.post('http://xxx.xxx.xxx.xxx:port/sendSensorDataMessage',json ={
                                  "humidity":humidity,
                                  "ppm":ppm,
                                  "processorCode":"0003",
@@ -58,7 +59,8 @@ def sendData(ppm, temperature, humidity):
 
 
 def sendTestData(ppm, temperature, humidity):
-    response = requests.post('http://8.141.56.170:8083/sendSensorDataTestMessage',json ={
+    # change http://xxx.xxx.xxx.xxx:port to your ip address and port
+    response = requests.post('http://xxx.xxx.xxx.xxx:port/sendSensorDataTestMessage',json ={
                                  "humidity":humidity,
                                  "ppm":ppm,
                                  "processorCode":"0003",
@@ -77,11 +79,11 @@ def print_scd_data():
         sendTestData(str("%0.2f"% scd.CO2), str("%0.2f"% scd.temperature), str("%0.2f"% scd.relative_humidity))
     return()
 
-def get_Position():
-   r = requests.get("http://ianzhao.top:3000/switch") 
-#    print("the condition of the switch is changing:")
-#    print(r.text)
-   return str(r.text)
+# def get_Position():
+#    r = requests.get("http://ianzhao.top:3000/switch") 
+# #    print("the condition of the switch is changing:")
+# #    print(r.text)
+#    return str(r.text)
 
 
 
