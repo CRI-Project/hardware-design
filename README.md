@@ -1,10 +1,13 @@
 # hardware-design
 
 ## hardware requirement
-<figure class="half">
-  <img src="images/sensor.jpg" width="30%">
-  <img src="images/raspberry_pi.jpg" width="30%">
-</figure>
+<img src="images/sensor.jpg" width="30%">
+
+- Sensirion SCD30 sensor
+<img src="images/raspberry_pi.jpg" width="30%">
+
+- raspberry pi 4B
+
 
 ## Install
 you should first clone this to your raspberry 4B.
