@@ -13,7 +13,6 @@ import board
 import busio
 import adafruit_scd30
 import Adafruit_GPIO.SPI as SPI
-import signal
 
 SCD30_device = 19
 sleep_interval = 6
