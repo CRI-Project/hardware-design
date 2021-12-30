@@ -43,7 +43,7 @@ def getRespberrySerial():
 
 # change http://xxx.xxx.xxx.xxx:port to your mysql address and port
 def sensorInitialization():
-        response = requests.post('http://xxx.xxx.xxx.xxx:port/climate/sensor/save', json={
+        response = requests.post('http://xxx.xxx.xxx.xxx:port//climate/sensor/save', json={
         "id": 1, # change this to your sensor id
         "isopen": 0, 
         "name": "sensor_1"  # change this to your sensor name
@@ -52,10 +52,15 @@ def sensorInitialization():
         print("The sensor has been initialized")
     else:
         print("The sensor has been initialized before.")
-
+        
+def getSensorStatus():
+    response =requests.get("http://xxx.xxx.xxx.xxx:port//climate/sensor/info/1")
+    status = (response.json()['sensor'])['isopen']
+    return status
+        
 def sendData(ppm, temperature, humidity):
     # change http://xxx.xxx.xxx.xxx:port to your mysql address and port
-    response = requests.post('http://xxx.xxx.xxx.xxx:port/sendSensorDataMessage',json ={
+    response = requests.post('http://xxx.xxx.xxx.xxx:port//sendSensorDataMessage',json ={
                                  "humidity":humidity,
                                  "ppm":ppm,
                                  "processorCode":"0003",
@@ -72,7 +77,7 @@ def sendData(ppm, temperature, humidity):
 # this function has not been used.
 # def sendTestData(ppm, temperature, humidity):
 #     # change http://xxx.xxx.xxx.xxx:port to your ip address and port
-#     response = requests.post('http://xxx.xxx.xxx.xxx:port/sendSensorDataTestMessage',json ={
+#     response = requests.post('http://xxx.xxx.xxx.xxx:port//sendSensorDataTestMessage',json ={
 #                                  "humidity":humidity,
 #                                  "ppm":ppm,
 #                                  "processorCode":"0003",
