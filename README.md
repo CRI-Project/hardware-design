@@ -1,4 +1,4 @@
-# hardware-design
+# hardware design part
 
 ## hardware requirement
 <img src="images/sensor.jpg" width="30%">
