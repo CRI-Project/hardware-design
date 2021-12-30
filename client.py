@@ -41,7 +41,7 @@ def getRespberrySerial():
         respberry_serial = 'ffffffffffffffff'
     return respberry_serial
 
-    # change http://xxx.xxx.xxx.xxx:port to your mysql address and port
+# change http://xxx.xxx.xxx.xxx:port to your mysql address and port
 def sensorInitialization():
         response = requests.post('http://xxx.xxx.xxx.xxx:port/climate/sensor/save', json={
         "id": 1, # change this to your sensor id
@@ -69,17 +69,17 @@ def sendData(ppm, temperature, humidity):
     print("State code:", response.status_code)
     print(response.json())
 
-
-def sendTestData(ppm, temperature, humidity):
-    # change http://xxx.xxx.xxx.xxx:port to your ip address and port
-    response = requests.post('http://xxx.xxx.xxx.xxx:port/sendSensorDataTestMessage',json ={
-                                 "humidity":humidity,
-                                 "ppm":ppm,
-                                 "processorCode":"0003",
-                                 "temperature":temperature,
-                                 })
-    print("State code:", response.status_code)
-    print(response.json())
+# this function has not been used.
+# def sendTestData(ppm, temperature, humidity):
+#     # change http://xxx.xxx.xxx.xxx:port to your ip address and port
+#     response = requests.post('http://xxx.xxx.xxx.xxx:port/sendSensorDataTestMessage',json ={
+#                                  "humidity":humidity,
+#                                  "ppm":ppm,
+#                                  "processorCode":"0003",
+#                                  "temperature":temperature,
+#                                  })
+#     print("State code:", response.status_code)
+#     print(response.json())
 
 def print_scd_data():
     if scd.data_available:
