@@ -51,9 +51,9 @@ def getRespberrySerial():
 
 def sensorInitialization():
         response = requests.post('http://xxx.xxx.xxx.xxx:port//climate/sensor/save', json={
-        "id": 1, # change this to your sensor id
-        "isopen": 0, 
-        "name": "sensor_1"  # change this to your sensor name
+                                "id": 1, # change this to your sensor id
+                                "isopen": 0, 
+                                "name": "sensor_1"  # change this to your sensor name
     })
     if response.json()['msg'] == 'success':
         print("The sensor has been initialized")
