@@ -111,17 +111,15 @@ scd = adafruit_scd30.SCD30(i2c)
 # scd.measurement_interval(6)
 
 while True:
-    i = get_Position()
-    print("condition:" +i)
-    print("flag: "+str(flag))
-    if i == "1" and flag == "0":
+    status = getSensorStatus()
+    if status == "1" and flag == "0":
         deviceON()   
         time.sleep(warm_up)
         flag = "1"
-    elif i == "1" and flag =="1":
+    elif status == "1" and flag =="1":
         print_scd_data()
         JSON_MESSAGE_ID += 1
-    elif i == "0":
+    elif status == "0":
         deviceOFF()
         flag = "0"
     time.sleep(sleep_interval)
