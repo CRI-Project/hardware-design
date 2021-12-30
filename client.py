@@ -49,7 +49,6 @@ def getRespberrySerial():
         respberry_serial = 'ffffffffffffffff'
     return respberry_serial
 
-# change http://xxx.xxx.xxx.xxx:port to your mysql address and port
 def sensorInitialization():
         response = requests.post('http://xxx.xxx.xxx.xxx:port//climate/sensor/save', json={
         "id": 1, # change this to your sensor id
@@ -67,7 +66,6 @@ def getSensorStatus():
     return status
         
 def sendData(ppm, temperature, humidity):
-    # change http://xxx.xxx.xxx.xxx:port to your mysql address and port
     response = requests.post('http://xxx.xxx.xxx.xxx:port//sendSensorDataMessage',json ={
                                  "humidity":humidity,
                                  "ppm":ppm,
