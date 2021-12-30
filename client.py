@@ -41,8 +41,20 @@ def getRespberrySerial():
         respberry_serial = 'ffffffffffffffff'
     return respberry_serial
 
+    # change http://xxx.xxx.xxx.xxx:port to your mysql address and port
+def sensorInitialization():
+        response = requests.post('http://xxx.xxx.xxx.xxx:port/climate/sensor/save', json={
+        "id": 1, # change this to your sensor id
+        "isopen": 0, 
+        "name": "sensor_1"  # change this to your sensor name
+    })
+    if response.json()['msg'] == 'success':
+        print("The sensor has been initialized")
+    else:
+        print("The sensor has been initialized before.")
+
 def sendData(ppm, temperature, humidity):
-    # change http://xxx.xxx.xxx.xxx:port to your ip address and port
+    # change http://xxx.xxx.xxx.xxx:port to your mysql address and port
     response = requests.post('http://xxx.xxx.xxx.xxx:port/sendSensorDataMessage',json ={
                                  "humidity":humidity,
                                  "ppm":ppm,
@@ -79,15 +91,8 @@ def print_scd_data():
         sendTestData(str("%0.2f"% scd.CO2), str("%0.2f"% scd.temperature), str("%0.2f"% scd.relative_humidity))
     return()
 
-# def get_Position():
-#    r = requests.get("http://ianzhao.top:3000/switch") 
-# #    print("the condition of the switch is changing:")
-# #    print(r.text)
-#    return str(r.text)
-
-
-
 setup()
+sensorInitialization()
 
 i2c = busio.I2C(board.SCL, board.SDA, frequency=50000)
 time.sleep(warm_up)
