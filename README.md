@@ -1,7 +1,7 @@
 # hardware-design
 
 ## hardware requirement
-<img src="image/sensor.jpg" width="50%">
+<img src="https://github.com/CRI-Project/hardware-design/tree/main/images/sensor.jpg" width="50%">
 ![raspberry](images/raspberry_pi.jpg)
 ## Install
 you should first clone this to your raspberry 4B.
