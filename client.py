@@ -51,7 +51,7 @@ def getRespberrySerial():
 def sensorInitialization():
         response = requests.post('http://xxx.xxx.xxx.xxx:port//climate/sensor/save', json={
                                 "id": 1, # change this to your sensor id
-                                "isopen": 0, 
+                                "isopen": 0, # 0 means the sensor switch is off, 1 means the sensor switch is on
                                 "name": "sensor_1"  # change this to your sensor name
     })
     if response.json()['msg'] == 'success':
@@ -59,10 +59,10 @@ def sensorInitialization():
     else:
         print("The sensor has been initialized before.")
         
-def getSensorStatus():
+def getSensorSwitchStatus():
     response =requests.get("http://xxx.xxx.xxx.xxx:port//climate/sensor/info/1")
-    status = (response.json()['sensor'])['isopen']
-    return status
+    switchStatus = (response.json()['sensor'])['isopen']
+    return switchStatus
         
 def sendData(ppm, temperature, humidity):
     response = requests.post('http://xxx.xxx.xxx.xxx:port//sendSensorDataMessage',json ={
@@ -107,18 +107,17 @@ sensorInitialization()
 i2c = busio.I2C(board.SCL, board.SDA, frequency=50000)
 time.sleep(warm_up)
 scd = adafruit_scd30.SCD30(i2c)
-# scd.measurement_interval(6)
 
 while True:
-    status = getSensorStatus()
-    if status == "1" and flag == "0":
+    switchStatus = getSensorSwitchStatus()
+    if switchStatus == "1" and flag == "0":
         deviceON()   
         time.sleep(warm_up)
         flag = "1"
-    elif status == "1" and flag =="1":
+    elif switchStatus == "1" and flag =="1":
         print_scd_data()
         JSON_MESSAGE_ID += 1
-    elif status == "0":
+    elif switchStatus == "0":
         deviceOFF()
         flag = "0"
     time.sleep(sleep_interval)
