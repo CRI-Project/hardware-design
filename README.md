@@ -1,10 +1,10 @@
 # hardware-design
 
 ## hardware requirement
-<center class="half">
+<figure class="half">
   <img src="images/sensor.jpg" width="30%">
   <img src="images/raspberry_pi.jpg" width="30%">
-</center>
+</figure>
 
 ## Install
 you should first clone this to your raspberry 4B.
