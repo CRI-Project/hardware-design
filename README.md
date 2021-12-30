@@ -1,6 +1,9 @@
 # hardware-design
 
-## Introduction of function
+## Introduction of functions
+
+
+
 
 <pre>
 ### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '2222' for key 'sensor.PRIMARY'
